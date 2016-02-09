@@ -10,9 +10,15 @@ p = argparse.ArgumentParser(description="Email all .py scripts in a folder to th
 p.add_argument("--sendfrom", help="The email address to send from (i.e. your gmail)")
 p.add_argument("--password", help="Password for the 'send from' address.")
 p.add_argument("--subject", help = "A subject line for the email.",default="PH 141 python code")
-p.add_argument("--body", help = "A message for the body of the email. You may use (e.g.) \\n for a newline.", default="Hi!\nThe python code which you recently turned in is attached for your reference.")
+p.add_argument("--body", help = "A message for the body of the email. You may use (e.g.) \\n for a newline.", default="Hi!\n\nThe python code which you recently turned in is attached for your reference.")
 p.add_argument("--directory", help="The directory containing all the .py files")
 args=p.parse_args()
+
+# check to see if some argument wasn't specified correctly
+for k in vars(args).keys():
+	if vars(args)[k]==None:
+		print("You have failed to specify a \"{}\" value!".format(k))
+		sys.exit()
 
 def main():
 
