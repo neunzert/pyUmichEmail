@@ -62,8 +62,8 @@ def main():
 		# send email
 		try:
 			server.sendmail(args.sendfrom, emails[i], headers+msgact+attachment)
-			server.quit()
 			print("Sent email to {}".format(emails[i]))
 		except Exception:
 			print("ERROR: could not send email to {}".format(emails[i]))
+	server.quit()
 main()
